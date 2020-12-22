@@ -7,7 +7,7 @@ const initialState = {
   nominations: []
 }
 
-export default function(state = initialState, action) {
+const nominationReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_NOMINATION:
       return {
@@ -21,3 +21,5 @@ export default function(state = initialState, action) {
       return state;
   }
 }
+
+export default nominationReducer;

@@ -1,10 +1,14 @@
-import React from "react";
+import React, {Fragment} from "react";
 import SearchBar from "./SearchBar";
+import Movies from "./Movies";
 
 const HomePage = () => {
 
   return (
-    <SearchBar />
+    <Fragment>
+      <SearchBar />
+      <Movies />
+    </Fragment>
   )
 }
 

@@ -12,7 +12,6 @@ const SearchBar = ({getMovies}) => {
 
   const onEnter = (e) => {
     if (e.keyCode === 13) {
-      console.log(title);
       getMovies(title);
     }
   }

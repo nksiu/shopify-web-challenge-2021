@@ -6,7 +6,7 @@ const initialState = {
   titleSearch: ""
 }
 
-export default function(state = initialState, action) {
+const movieReducer = (state = initialState, action) => {
   switch(action.type) {
     case GET_MOVIES:
       return {
@@ -16,3 +16,5 @@ export default function(state = initialState, action) {
       return state;
   }
 }
+
+export default movieReducer;
