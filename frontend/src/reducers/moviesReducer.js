@@ -1,18 +1,16 @@
 import {
-  GET_MOVIE
+  GET_MOVIES
 } from "../actions/types";
 
 const initialState = {
-  movies: [],
-  loading: true
+  titleSearch: ""
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case GET_MOVIE:
+    case GET_MOVIES:
       return {
-        movies: action.payload,
-        loading: false
+        titleSearch: action.payload
       }
     default:
       return state;
