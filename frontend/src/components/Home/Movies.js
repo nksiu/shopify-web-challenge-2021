@@ -9,7 +9,8 @@ const MOVIES_QUERY = gql`
     movies(searchTitle: $searchTitle){
       Title,
       Year,
-      imdbID
+      imdbID,
+      Poster
     }
   }
 `
@@ -31,9 +32,12 @@ const Movies = ({movieList}) => {
 
                   return <Fragment>
                     {
-                      data.movies.map(movie => (
-                        <Movie key={movie.imdbID} movie={movie} />
-                      ))
+                      data.movies ?
+                        data.movies.map(movie => (
+                          <Movie key={movie.imdbID} movie={movie} />
+                        ))
+                      :
+                        <p>Looks like there's no results...</p>
                     }
                   </Fragment>
                 }
