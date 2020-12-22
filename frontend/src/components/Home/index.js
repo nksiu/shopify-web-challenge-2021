@@ -1,9 +1,10 @@
 import React from "react";
+import SearchBar from "./SearchBar";
 
 const HomePage = () => {
 
   return (
-    <h1>The Shoppies</h1>
+    <SearchBar />
   )
 }
 
