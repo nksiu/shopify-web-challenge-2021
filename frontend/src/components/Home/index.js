@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import {connect} from "react-redux";
+import {Fade} from "react-reveal";
 import SearchBar from "./SearchBar";
 import Movies from "./Movies";
 import Nominations from "./Nominations";
@@ -16,10 +17,12 @@ const HomePage = ({shouldLimit, limitNomination}) => {
     <Fragment>
       {
         shouldLimit ?
-          <div className="alert alert-dismissible alert-warning" style={{position: "fixed", marginLeft: "40%", zIndex: 100}}>
-            <button type="button" className="close" data-dismiss="alert" onClick={handleDismiss}>&times;</button>
-            You can only have 5 nominations
-          </div>
+          <Fade top>
+            <div className="alert alert-dismissible alert-warning" style={{position: "fixed", marginLeft: "40%", zIndex: 100}}>
+              <button type="button" className="close" data-dismiss="alert" onClick={handleDismiss}>&times;</button>
+              You can only have 5 nominations
+            </div>
+          </Fade>
         :
           null
       }

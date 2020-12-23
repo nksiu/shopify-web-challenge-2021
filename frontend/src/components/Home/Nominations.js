@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 import {connect} from "react-redux";
+import TransitionGroup from "react-transition-group/TransitionGroup";
+import {Fade} from "react-reveal";
 import Nomination from "./Nomination"
 
 const Nominations = ({nominations}) => {
@@ -10,7 +12,15 @@ const Nominations = ({nominations}) => {
         <Fragment>
           {
             nominations.length ?
-              nominations.map((nomination) => <Nomination key={nomination.imdbID} nomination={nomination}/>)
+              <TransitionGroup>
+                {
+                  nominations.map((nomination) =>
+                    <Fade key={nomination.imdbID} collapse bottom>
+                      <Nomination nomination={nomination}/>
+                    </Fade>
+                  )
+                }
+              </TransitionGroup>
             :
               null
           }
