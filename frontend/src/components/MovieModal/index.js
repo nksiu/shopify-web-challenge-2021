@@ -1,4 +1,6 @@
 import React, {Fragment, useState} from "react";
+import {connect} from "react-redux";
+import {addNomination, limitNomination} from "../../actions/nominationActions";
 import gql from "graphql-tag";
 import {Query} from "react-apollo";
 import Modal from "react-bootstrap/Modal";
@@ -19,9 +21,30 @@ const MOVIE_QUERY = gql`
   }
 `
 
-const MovieModal = ({movie}) => {
-  const [show, setShow] = useState(false);
+const nominationLimit = 5;
 
+const MovieModal = ({movie, nominations, addNomination, limitNomination}) => {
+  let inNom = false;
+  for (let nomination of nominations) {
+    if (nomination.imdbID === movie.imdbID) {
+      inNom = true;
+      break;
+    }
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (nominations.length < nominationLimit) {
+      addNomination(movie);
+    } else {
+      limitNomination(true);
+      setTimeout(() => {
+        limitNomination(false);
+      }, 3000)
+    }
+  }
+
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -59,9 +82,20 @@ const MovieModal = ({movie}) => {
             }
           </Query>
         </Modal.Body>
+        <Modal.Footer>
+          <button
+            type="button"
+            className={`btn btn-outline-${inNom ? "secondary" : "success"}`}
+            onClick={handleClick}
+            disabled={inNom}
+            style={{minWidth: "100px"}}
+          >
+            Nominate
+          </button>
+        </Modal.Footer>
       </Modal>
     </Fragment>
   )
 }
 
-export default MovieModal;
+export default connect(null, {addNomination, limitNomination})(MovieModal);

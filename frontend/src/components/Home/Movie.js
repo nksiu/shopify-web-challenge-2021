@@ -51,7 +51,7 @@ const Movie = ({movie, nominations, addNomination, limitNomination}) => {
               </button>
             </div>
             <div className="row align-items-end">
-              <MovieModal movie={movie}/>
+              <MovieModal movie={movie} nominations={nominations}/>
             </div>
           </div>
         </div>
