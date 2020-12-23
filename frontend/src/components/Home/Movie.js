@@ -1,7 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
+import {connect} from "react-redux";
 import {Button} from "@material-ui/core";
+import {addNomination} from "../../actions/nominationActions";
 
-const Movie = ({movie}) => {
+const nominationLimit = 5;
+
+const Movie = ({movie, nominations, addNomination}) => {
+  const [isDisabled, setDisabled] = useState(false);
+  
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (nominations.length < nominationLimit) {
+      setDisabled(true);
+      addNomination(movie);
+    }
+  }
+  
   return (
     <div className="card card-body mb-1">
       <div className="row">
@@ -13,11 +27,22 @@ const Movie = ({movie}) => {
           <p>{movie.Year}</p>
         </div>
         <div className="col-md-2">
-          <Button variant="outlined" color="primary">Nominate</Button>
+          <Button
+            onClick={handleClick}
+            disabled={isDisabled}
+            variant="outlined"
+            color="primary"
+          >
+              Nominate
+          </Button>
         </div>
       </div>
     </div>
   )
 }
 
-export default Movie;
+const mapStateToProps = state => ({
+  nominations: state.nominationList.nominations
+});
+
+export default connect(mapStateToProps, {addNomination})(Movie);

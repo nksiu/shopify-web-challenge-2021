@@ -10,6 +10,10 @@ const MovieNomWrapperSC = styled.div`
     flex-grow: 1;
     padding-right: 100px;
   }
+
+  .nomination-list {
+    max-width: 200px;
+  }
 `
 
 export default MovieNomWrapperSC;

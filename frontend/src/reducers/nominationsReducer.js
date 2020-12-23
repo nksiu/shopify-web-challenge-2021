@@ -11,7 +11,7 @@ const nominationReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_NOMINATION:
       return {
-        nominations: [action.payload, ...state.nominations]
+        nominations: [...state.nominations, action.payload]
       }
     case REMOVE_NOMINATION:
       return {
