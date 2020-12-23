@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {removeNomination} from "../../actions/nominationActions";
+import {Fade} from "react-reveal";
 
 const Nomination = ({nomination, removeNomination}) => {
 
@@ -11,14 +12,13 @@ const Nomination = ({nomination, removeNomination}) => {
 
   return (
     <li className="list-group-item">
-      <div className="row">
-        <div className="col-md-10 align-self-center">
-          <p>
-            {nomination.Title} ({nomination.Year})
-          </p>
+      <div className="row align-items-center">
+        <div className="col-md-10">
+          {nomination.Title} {(nomination.Year)}
         </div>
-        <div className="col-md-2 align-self-center">
-          <button 
+        <div className="col-md-2">
+          <button
+            data-id={nomination.imdbID}
             type="button"
             className="btn btn-outline-danger btn-sm"
             onClick={handleClick}

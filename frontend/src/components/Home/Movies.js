@@ -34,9 +34,10 @@ const Movies = ({movieList}) => {
                       data.movies ?
                         data.movies.map(movie => (
                           <Movie key={movie.imdbID} movie={movie} />
-                        ))
-                      :
-                        <p>Looks like there's no results...</p>
+                        )
+                      )
+                    :
+                      <p>Looks like there's no results...</p>
                     }
                   </Fragment>
                 }

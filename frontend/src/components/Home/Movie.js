@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {addNomination, limitNomination} from "../../actions/nominationActions";
+import {Fade} from "react-reveal";
 
 const nominationLimit = 5;
 
@@ -26,27 +27,29 @@ const Movie = ({movie, nominations, addNomination, limitNomination}) => {
   }
   
   return (
-    <div className="card card-body mb-1">
-      <div className="row">
-        <div className="col-md-2">
-          <img src={movie.Poster} alt="Movie Thumbnail" style={{display: "block", height: "auto", width: "80px", margin: "auto"}}/>
-        </div>
-        <div className="col-md-8">
-          <h5>{movie.Title}</h5>
-          <p>{movie.Year}</p>
-        </div>
-        <div className="col-md-2">
-          <button
-            type="button"
-            className={`btn btn-outline-${inNom ? "secondary" : "success"}`}
-            onClick={handleClick}
-            disabled={inNom}
-          >
-            Nominate
-          </button>
+    <Fade bottom>
+      <div className="card card-body mb-1">
+        <div className="row">
+          <div className="col-md-2">
+            <img src={movie.Poster} alt="Movie Thumbnail" style={{display: "block", height: "auto", width: "80px", margin: "auto"}}/>
+          </div>
+          <div className="col-md-8">
+            <h5>{movie.Title}</h5>
+            <p>{movie.Year}</p>
+          </div>
+          <div className="col-md-2">
+            <button
+              type="button"
+              className={`btn btn-outline-${inNom ? "secondary" : "success"}`}
+              onClick={handleClick}
+              disabled={inNom}
+            >
+              Nominate
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </Fade>
   )
 }
 
