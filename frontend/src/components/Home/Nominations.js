@@ -13,7 +13,7 @@ const Nominations = ({nominations}) => {
           )
         }
       </ul>
-      <small id="emailHelp" className="form-text text-muted">
+      <small className="form-text text-muted">
         Nomination Count: {nominations.length}
       </small>
     </Fragment>

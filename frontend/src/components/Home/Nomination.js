@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import {removeNomination} from "../../actions/nominationActions";
-import {Fade} from "react-reveal";
 
 const Nomination = ({nomination, removeNomination}) => {
 
@@ -14,7 +13,7 @@ const Nomination = ({nomination, removeNomination}) => {
     <li className="list-group-item">
       <div className="row align-items-center">
         <div className="col-md-10">
-          {nomination.Title} {(nomination.Year)}
+          {nomination.Title} ({nomination.Year})
         </div>
         <div className="col-md-2">
           <button

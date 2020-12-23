@@ -22,7 +22,6 @@ const Movies = ({movieList}) => {
       {
         movieList.titleSearch ?
         <Fragment>
-          <h4 className="h1.display-4 my-3">Results for "{movieList.titleSearch}"</h4>
           <Query query={MOVIES_QUERY} variables={{searchTitle: movieList.titleSearch}}>
               {
                 ({loading, error, data}) => {
@@ -30,6 +29,19 @@ const Movies = ({movieList}) => {
                   if (error) console.log(error);
 
                   return <Fragment>
+                    <h4 className="h1.display-4 my-3">
+                      Results for "{movieList.titleSearch}"
+                      {
+                        data.movies ?
+                          <span>
+                            <small className="form-text text-muted">
+                              Matched with: {data.movies.length} movies
+                            </small>
+                          </span>
+                        :
+                          null
+                      }
+                    </h4>
                     {
                       data.movies ?
                         data.movies.map(movie => (
