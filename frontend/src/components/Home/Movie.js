@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {addNomination, limitNomination} from "../../actions/nominationActions";
 import {Fade} from "react-reveal";
+import MovieModal from "../MovieModal";
 
 const nominationLimit = 5;
 
@@ -38,14 +39,20 @@ const Movie = ({movie, nominations, addNomination, limitNomination}) => {
             <p>{movie.Year}</p>
           </div>
           <div className="col-md-2">
-            <button
-              type="button"
-              className={`btn btn-outline-${inNom ? "secondary" : "success"}`}
-              onClick={handleClick}
-              disabled={inNom}
-            >
-              Nominate
-            </button>
+            <div className="row align-items-start">
+              <button
+                type="button"
+                className={`btn btn-outline-${inNom ? "secondary" : "success"}`}
+                onClick={handleClick}
+                disabled={inNom}
+                style={{minWidth: "100px"}}
+              >
+                Nominate
+              </button>
+            </div>
+            <div className="row align-items-end">
+              <MovieModal movie={movie}/>
+            </div>
           </div>
         </div>
       </div>

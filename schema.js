@@ -17,6 +17,19 @@ const MovieType = new GraphQLObjectType({
   })
 });
 
+const MovieInfoType = new GraphQLObjectType({
+  name: "MovieInfo",
+  fields: () => ({
+    Rated: {type: GraphQLString},
+    Released: {type: GraphQLString},
+    Runtime: {type: GraphQLString},
+    Genre: {type: GraphQLString},
+    Plot: {type: GraphQLString},
+    Actors: {type: GraphQLString},
+    Director: {type: GraphQLString}
+  })
+})
+
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
@@ -28,6 +41,17 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         return axios.get(`http://www.omdbapi.com/?s=${args.searchTitle}&apikey=${process.env.API_KEY}&type=movie`)
           .then(res => res.data.Search)
+      }
+    },
+
+    movieInfo: {
+      type: MovieInfoType,
+      args: {
+        imdbID: {type: GraphQLString}
+      },
+      resolve(parent, args) {
+        return axios.get(`http://www.omdbapi.com/?i=${args.imdbID}&apikey=${process.env.API_KEY}`)
+          .then(res => res.data)
       }
     }
   }

@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import gql from "graphql-tag";
 import {Query} from "react-apollo";
 import Movie from "./Movie";
-import {CircularProgress} from "@material-ui/core";
+import Spinner from "react-bootstrap/Spinner";
 
 const MOVIES_QUERY = gql`
   query GraphQLList($searchTitle: String!){
@@ -25,7 +25,7 @@ const Movies = ({movieList}) => {
           <Query query={MOVIES_QUERY} variables={{searchTitle: movieList.titleSearch}}>
               {
                 ({loading, error, data}) => {
-                  if (loading) return <CircularProgress />
+                  if (loading) return <Spinner className="mt-4" animation="border" variant="primary"/>
                   if (error) console.log(error);
 
                   return <Fragment>
