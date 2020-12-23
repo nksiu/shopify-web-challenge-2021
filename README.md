@@ -1,8 +1,9 @@
 # Welcome
-Thank you for viewing my Intern Challenge for Shopify!
+Thank you for viewing my Frontend 2021 Summer Intern Challenge for Shopify!
 The demo for this challenge is avaiblable here: https://nicksiu-shopify-challenge-2021.herokuapp.com/
 
 This application used GraphQL with React, Redux, and Apollo.
+
 Addtional features added: 
   - Modal to show additional information about a movie
   - Nomination list persisted after refreshing or navigating away
