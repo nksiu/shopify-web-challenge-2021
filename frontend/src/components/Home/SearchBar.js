@@ -19,7 +19,7 @@ const SearchBar = ({getMovies}) => {
     <Fragment>
       <h1>The Shoppies</h1>
       <input 
-        class="form-control form-control-lg"
+        className="form-control form-control-lg"
         type="text"
         placeholder="Movie Title"
         id="inputLarge"

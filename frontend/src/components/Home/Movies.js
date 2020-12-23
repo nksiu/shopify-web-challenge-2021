@@ -28,7 +28,6 @@ const Movies = ({movieList}) => {
                 ({loading, error, data}) => {
                   if (loading) return <CircularProgress />
                   if (error) console.log(error);
-                  console.log(data);
 
                   return <Fragment>
                     {

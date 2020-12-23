@@ -1,10 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
-import {addNomination} from "../../actions/nominationActions";
+import {addNomination, limitNomination} from "../../actions/nominationActions";
 
 const nominationLimit = 5;
 
-const Movie = ({movie, nominations, addNomination}) => {
+const Movie = ({movie, nominations, addNomination, limitNomination}) => {
   let inNom = false;
   for (let nomination of nominations) {
     if (nomination.imdbID === movie.imdbID) {
@@ -17,6 +17,11 @@ const Movie = ({movie, nominations, addNomination}) => {
     e.preventDefault();
     if (nominations.length < nominationLimit) {
       addNomination(movie);
+    } else {
+      limitNomination(true);
+      setTimeout(() => {
+        limitNomination(false)
+      }, 3000)
     }
   }
   
@@ -33,7 +38,7 @@ const Movie = ({movie, nominations, addNomination}) => {
         <div className="col-md-2">
           <button
             type="button"
-            class={`btn btn-outline-${inNom ? "secondary" : "success"}`}
+            className={`btn btn-outline-${inNom ? "secondary" : "success"}`}
             onClick={handleClick}
             disabled={inNom}
           >
@@ -49,4 +54,4 @@ const mapStateToProps = state => ({
   nominations: state.nominationList.nominations
 });
 
-export default connect(mapStateToProps, {addNomination})(Movie);
+export default connect(mapStateToProps, {addNomination, limitNomination})(Movie);
