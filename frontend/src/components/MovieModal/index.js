@@ -29,7 +29,7 @@ const MovieModal = ({movie}) => {
     <Fragment>
       <button
         type="button" 
-        class="btn btn-outline-info"
+        className="btn btn-outline-info"
         onClick={handleShow}
         style={{minWidth: "100px", marginTop: "30px"}}
       >
