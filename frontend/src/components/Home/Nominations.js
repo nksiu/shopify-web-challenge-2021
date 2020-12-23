@@ -5,7 +5,7 @@ import Nomination from "./Nomination"
 const Nominations = ({nominations}) => {
   return (
     <Fragment>
-      <h2 className="h1.display-4 my-3">Nominations</h2>
+      <h3 className="h1.display-4 my-3">Nominations</h3>
       <ul className="list-group">
         <Fragment>
           {

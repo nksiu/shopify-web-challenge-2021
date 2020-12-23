@@ -1,6 +1,5 @@
 import React, {Fragment, useState} from "react";
 import {connect} from "react-redux";
-import {TextField} from "@material-ui/core";
 import {getMovies} from "../../actions/moviesActions";
 
 const SearchBar = ({getMovies}) => {
@@ -19,10 +18,11 @@ const SearchBar = ({getMovies}) => {
   return (
     <Fragment>
       <h1>The Shoppies</h1>
-      <TextField 
-        label="Movie Title"
-        variant="outlined"
-        fullWidth
+      <input 
+        class="form-control form-control-lg"
+        type="text"
+        placeholder="Movie Title"
+        id="inputLarge"
         onChange={handleChange}
         onKeyDown={onEnter}
       />

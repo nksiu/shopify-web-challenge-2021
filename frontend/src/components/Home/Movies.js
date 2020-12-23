@@ -22,7 +22,7 @@ const Movies = ({movieList}) => {
       {
         movieList.titleSearch ?
         <Fragment>
-          <h2 className="h1.display-4 my-3">Results for "{movieList.titleSearch}"</h2>
+          <h4 className="h1.display-4 my-3">Results for "{movieList.titleSearch}"</h4>
           <Query query={MOVIES_QUERY} variables={{searchTitle: movieList.titleSearch}}>
               {
                 ({loading, error, data}) => {

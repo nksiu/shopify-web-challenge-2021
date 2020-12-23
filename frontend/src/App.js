@@ -13,9 +13,7 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <Router>
-          <div className="container">
-            <Route exact path="/" render={() => <Home/>}/>
-          </div>
+          <Route exact path="/" render={() => <Home/>}/>
         </Router>
       </ApolloProvider>
     )

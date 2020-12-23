@@ -12,12 +12,12 @@ const Nomination = ({nomination, removeNomination}) => {
   return (
     <li className="list-group-item">
       <div className="row">
-        <div className="col-md-9">
+        <div className="col-md-10 align-self-center">
           <p>
             {nomination.Title} ({nomination.Year})
           </p>
         </div>
-        <div className="col-md-3 align-self-center">
+        <div className="col-md-2 align-self-center">
           <button 
             type="button"
             className="btn btn-outline-danger btn-sm"

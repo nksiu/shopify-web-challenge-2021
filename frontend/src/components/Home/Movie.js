@@ -1,6 +1,5 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Button} from "@material-ui/core";
 import {addNomination} from "../../actions/nominationActions";
 
 const nominationLimit = 5;
@@ -32,14 +31,14 @@ const Movie = ({movie, nominations, addNomination}) => {
           <p>{movie.Year}</p>
         </div>
         <div className="col-md-2">
-          <Button
+          <button
+            type="button"
+            class={`btn btn-outline-${inNom ? "secondary" : "success"}`}
             onClick={handleClick}
             disabled={inNom}
-            variant="outlined"
-            color="primary"
           >
-              Nominate
-          </Button>
+            Nominate
+          </button>
         </div>
       </div>
     </div>
