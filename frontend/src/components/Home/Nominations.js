@@ -10,7 +10,7 @@ const Nominations = ({nominations}) => {
         <Fragment>
           {
             nominations.length ?
-              nominations.map((nomination) => <Nomination nomination={nomination}/>)
+              nominations.map((nomination) => <Nomination key={nomination.imdbID} nomination={nomination}/>)
             :
               null
           }

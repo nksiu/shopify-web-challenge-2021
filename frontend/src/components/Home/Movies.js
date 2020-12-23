@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import gql from "graphql-tag";
 import {Query} from "react-apollo";
 import Movie from "./Movie";
+import {CircularProgress} from "@material-ui/core";
 
 const MOVIES_QUERY = gql`
   query GraphQLList($searchTitle: String!){
@@ -16,7 +17,6 @@ const MOVIES_QUERY = gql`
 `
 
 const Movies = ({movieList}) => {
-  console.log(movieList);
   return (
     <Fragment>
       {
@@ -26,7 +26,7 @@ const Movies = ({movieList}) => {
           <Query query={MOVIES_QUERY} variables={{searchTitle: movieList.titleSearch}}>
               {
                 ({loading, error, data}) => {
-                  if (loading) return <h4>Loading...</h4>
+                  if (loading) return <CircularProgress />
                   if (error) console.log(error);
                   console.log(data);
 

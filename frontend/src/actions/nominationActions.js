@@ -6,3 +6,10 @@ export const addNomination = (movie) => dispatch => {
     payload: movie
   })
 }
+
+export const removeNomination = (movieId) => dispatch => {
+  return dispatch({
+    type: REMOVE_NOMINATION,
+    payload: movieId
+  })
+}

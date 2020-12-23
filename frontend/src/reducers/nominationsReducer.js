@@ -15,7 +15,7 @@ const nominationReducer = (state = initialState, action) => {
       }
     case REMOVE_NOMINATION:
       return {
-        nominations: state.nominations.filter(nomination => nomination.id !== action.payload)
+        nominations: state.nominations.filter(nomination => nomination.imdbID !== action.payload)
       }
     default:
       return state;

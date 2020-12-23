@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import {Button} from "@material-ui/core";
 import {addNomination} from "../../actions/nominationActions";
@@ -6,12 +6,17 @@ import {addNomination} from "../../actions/nominationActions";
 const nominationLimit = 5;
 
 const Movie = ({movie, nominations, addNomination}) => {
-  const [isDisabled, setDisabled] = useState(false);
-  
+  let inNom = false;
+  for (let nomination of nominations) {
+    if (nomination.imdbID === movie.imdbID) {
+      inNom = true;
+      break;
+    }
+  }
+
   const handleClick = (e) => {
     e.preventDefault();
     if (nominations.length < nominationLimit) {
-      setDisabled(true);
       addNomination(movie);
     }
   }
@@ -29,7 +34,7 @@ const Movie = ({movie, nominations, addNomination}) => {
         <div className="col-md-2">
           <Button
             onClick={handleClick}
-            disabled={isDisabled}
+            disabled={inNom}
             variant="outlined"
             color="primary"
           >
